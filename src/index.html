@@ -1,0 +1,199 @@
+<!--
+Project: Akari
+Description: Main HTML entry point for the Akari educational platform. 
+Defines the semantic structure for the Java programming roadmap, organizing 
+six core modules ranging from fundamental syntax and OOP to Design Patterns 
+and Software Architecture.
+
+This file features a responsive grid layout for course cards, a dedicated 
+header with a GitHub profile link, and integrates custom CSS for the dark-themed 
+UI. It is designed as the foundation for the upcoming educational content.
+
+Author: Alexis Corona
+Version: Development
+-->
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AKARI</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a
+          href="https://github.com/alexis-corona"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-link"
+          title="Ver perfil de GitHub"
+        >
+          <svg
+            class="github-icon"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            />
+          </svg>
+        </a>
+
+        <h1>AKARI あかり</h1>
+        <p class="subtitle">Aprende a programar sin complicaciones.</p>
+      </header>
+
+      <div class="grid">
+        <div class="card-row">
+          <div class="card">
+            <span class="tag java">Java</span>
+            <h3>1. Fundamentos de Sintaxis y Programación Básica</h3>
+            <p>
+              Introducción al ecosistema:<br />
+              ¿Qué es el JDK, JRE y la JVM? (La famosa portabilidad de Java).<br /><br />
+
+              Variables y Tipos de Datos:<br />
+              Primitivos (int, double, boolean) vs. Tipos Objeto (String,
+              Integer).<br /><br />
+
+              Operadores y Control de Flujo:<br />
+              if/else<br />
+              switch<br />
+              for<br />
+              while<br />
+              do-while. <br /><br />
+
+              Entrada y Salida de Datos:<br />
+              Lectura limpia de datos (de consola a archivos) de forma
+              segura.<br /><br />
+            </p>
+            <button class="btn" disabled>Próximamente</button>
+          </div>
+
+          <div class="card">
+            <span class="tag java">Java</span>
+            <h3>2. Programación Orientada a Objetos (POO)</h3>
+            <p>
+              Clases y Objetos:<br />
+              Anatomía de una clase, atributos, métodos y constructores.<br /><br />
+
+              Los 4 Pilares de la POO:<br />
+              Abstracción y Encapsulamiento: Modificadores de acceso (private,
+              public, protected) y uso de Getters/Setters.<br />
+              Herencia: Reutilización de código con extends.<br />
+              Polimorfismo: Sobrecarga y sobreescritura de métodos.<br /><br />
+
+              Interfaces y Clases Abstractas:<br />
+              Diseñar contratos de comportamiento.<br /><br />
+
+              Manejo de Excepciones:<br />
+              try-catch-finally<br />
+              excepciones personalizadas y por qué nunca debes dejar un bloque
+              catch vacío.<br /><br />
+            </p>
+            <button class="btn" disabled>Próximamente</button>
+          </div>
+        </div>
+
+        <div class="card-row">
+          <div class="card">
+            <span class="tag java">Java</span>
+            <h3>
+              3. Estructuras de Datos y Colecciones (Java Collections Framework)
+            </h3>
+            <p>
+              Arreglos nativos: Monodimensionales y bidimensionales.<br /><br />
+
+              El Framework de Colecciones:<br />
+              Listas: ArrayList vs. LinkedList.<br />
+              Conjuntos: HashSet y TreeSet (evitando duplicados).<br />
+              Mapas: HashMap y TreeMap (clave-valor).<br />
+              Iteradores y Clases Genéricas: Cómo recorrer colecciones de forma
+              profesional y crear estructuras flexibles.<br /><br />
+            </p>
+            <button class="btn" disabled>Próximamente</button>
+          </div>
+
+          <div class="card">
+            <span class="tag java">Java</span>
+            <h3>4. Algoritmos Esenciales y Complejidad</h3>
+            <p>
+              Introducción a la Complejidad (Big O):<br />
+              Por qué importa la eficiencia.<br /><br />
+
+              Algoritmos de Ordenamiento:<br />
+              Métodos simples: Bubble Sort e Insertion Sort.<br />
+              Métodos avanzados: Merge Sort y Quick Sort.<br /><br />
+
+              Algoritmos de Búsqueda:<br />
+              Búsqueda lineal vs. Búsqueda binaria.<br /><br />
+
+              Algoritmos de Grafos y Caminos:<br />
+              Dijkstra (ideal para entender estructuras complejas y
+              optimización).<br /><br />
+            </p>
+            <button class="btn" disabled>Próximamente</button>
+          </div>
+        </div>
+
+        <div class="card-row">
+          <div class="card">
+            <span class="tag java">Java</span>
+            <h3>5. Patrones de Diseño (Design Patterns)</h3>
+            <p>
+              Patrones Creacionales:<br />
+              Singleton<br />
+              Factory<br />
+              Abstract Factory<br />
+              Prototype.<br /><br />
+
+              Patrones Estructurales:<br />
+              Adapter<br />
+              Decorator<br />
+              Facade.<br /><br />
+
+              Patrones de Comportamiento:<br />
+              Observer<br />
+              Strategy<br />
+              State<br />
+              Iterator.<br /><br />
+            </p>
+            <button class="btn" disabled>Próximamente</button>
+          </div>
+
+          <div class="card">
+            <span class="tag java">Java</span>
+            <h3>6. Arquitectura de Software</h3>
+            <p>
+              Principios SOLID:<br />
+              Las 5 reglas de oro para escribir código mantenible y limpio.<br /><br />
+
+              Arquitectura en Capas (Layered Architecture):<br />
+              Separar la aplicación en Controlador/Vista, Lógica de Negocio
+              (Service) y Acceso a Datos (Repository/DAO). Es la base de
+              frameworks como Spring Boot.<br /><br />
+
+              Inyección de Dependencias:<br />
+              Qué es, por qué evita el acoplamiento fuerte y cómo se relaciona
+              con la POO avanzada.<br /><br />
+
+              Introducción a Arquitecturas Modernas:<br />
+              Una pincelada teórica de qué es la Arquitectura Hexagonal (Puertos
+              y Adaptadores) y la diferencia entre Monolitos y
+              Microservicios.<br /><br />
+            </p>
+            <button class="btn" disabled>Próximamente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+/**
+ * Project: Akari
+ * Description: Styling for the Akari educational platform. Implements a 
+ * dark-themed UI with a responsive grid system, stylized course cards with 
+ * interactive hover effects, and a custom gradient header.
+ *
+ * Author: Alexis Corona
+ * Version: Development
+ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #131314;
+  color: #e3e3e3;
+  line-height: 1.6;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #569aff, #a87ffb, #ff7ba9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+p.subtitle {
+  color: #9aa0a6;
+  font-size: 1.1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.card-row {
+  display: contents;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #1e1f20;
+  border: 1px solid #3c4043;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.25s ease;
+}
+
+.card:hover {
+  border-color: #a2d2ff;
+  background-color: #222324;
+  transform: translateY(-2px);
+}
+
+.tag {
+  display: inline-block;
+  background-color: #fb5607;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: #f0f4f9;
+}
+
+.card p {
+  color: #9aa0a6;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a2d2ff;
+  color: #131314;
+  padding: 0 22px;
+  height: 40px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-sizing: border-box;
+}
+
+.btn:hover {
+  background-color: #c2e7ff;
+}
+
+.btn:disabled {
+  background-color: #2e3135;
+  color: #747775;
+  cursor: not-allowed;
+}
+
+.github-link {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  display: inline-flex;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.github-icon {
+  width: 28px;
+  height: 28px;
+  fill: #9aa0a6;
+  transition:
+    fill 0.25s ease,
+    filter 0.25s ease;
+}
+
+.github-link:hover {
+  transform: translateY(-2px);
+}
+
+.github-link:hover .github-icon {
+  fill: #a8c7fa;
+  filter: drop-shadow(0 0 8px rgba(168, 199, 250, 0.4));
+}
+
+@media (max-width: 480px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .github-link,
+  .back-link {
+    position: static;
+  }
+}
