@@ -157,6 +157,12 @@ h3 {
   filter: drop-shadow(0 0 8px rgba(168, 199, 250, 0.4));
 }
 
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 480px) {
   header {
     display: flex;
