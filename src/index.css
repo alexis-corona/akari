@@ -157,6 +157,26 @@ h3 {
   filter: drop-shadow(0 0 8px rgba(168, 199, 250, 0.4));
 }
 
+.back-link {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  color: #a2d2ff;
+  text-decoration: none;
+  font-weight: 600;
+  gap: 8px;
+  transition:
+    color 0.2s,
+    transform 0.25s ease;
+}
+
+.back-link:hover {
+  color: #c2e7ff;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
