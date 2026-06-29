@@ -177,6 +177,69 @@ h3 {
   transform: translateY(-2px);
 }
 
+.lesson-content {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: #1e1f20;
+  border: 1px solid #3c4043;
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.lesson-content h2 {
+  font-size: 1.8rem;
+  color: #f0f4f9;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #3c4043;
+  padding-bottom: 8px;
+}
+
+.lesson-content h3 {
+  font-size: 1.25rem;
+  color: #e3e3e3;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
+
+.lesson-content p {
+  color: #e3e3e3;
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.lesson-content ul {
+  margin-left: 25px;
+  margin-bottom: 24px;
+  color: #e3e3e3;
+}
+
+.lesson-content li {
+  margin-bottom: 8px;
+}
+
+.lesson-content strong {
+  color: #ffffff;
+}
+
+.note-box {
+  background: rgba(162, 210, 255, 0.05);
+  border-left: 4px solid #70d6ff;
+  padding: 20px;
+  margin: 32px 0;
+}
+
+.note-box p {
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: #c4c7c5;
+}
+
+.note-box strong {
+  color: #70d6ff;
+}
+
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;

@@ -1,0 +1,198 @@
+<!--
+Project: Akari
+Description: Lesson 01 - Core Java Environment.
+This page is the first lesson of Module 01, explaining the fundamental
+architecture of the Java ecosystem, including the roles and relationships
+between the JDK, JRE, and JVM.
+
+Path: /lessons/module-01/lesson-01.html
+Author: Alexis Corona
+Version: Development
+-->
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akari - El Ecosistema de Java</title>
+    <link rel="stylesheet" href="../../index.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="index.html" class="back-link">🡠 Volver</a>
+        <a
+          href="https://github.com/alexis-corona"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-link"
+          title="Ver perfil de GitHub"
+        >
+          <svg
+            class="github-icon"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            />
+          </svg>
+        </a>
+
+        <h1>JDK, JRE y JVM</h1>
+        <p class="subtitle">
+          Comprendiendo los tres pilares del entorno de ejecución de Java y su
+          portabilidad.
+        </p>
+      </header>
+
+      <main class="lesson-content">
+        <p>
+          Para aprender Java de forma verdaderamente profesional, no basta con
+          memorizar cómo escribir un ciclo o declarar una variable. Primero
+          debes entender <strong>cómo se procesa tu código</strong> tras
+          bambalinas. El ecosistema de Java se sostiene sobre tres siglas
+          esenciales: <strong>JDK</strong>, <strong>JRE</strong> y
+          <strong>JVM</strong>. Aunque suelen confundirse, cada una tiene un rol
+          estrictamente diferenciado en forma de capas.
+        </p>
+
+        <h2>1. La Máquina Virtual de Java (JVM)</h2>
+        <p>
+          La <strong>JVM (Java Virtual Machine)</strong> es el corazón de todo
+          el ecosistema. Es la responsable directa de tomar tu código ya
+          compilado y transformarlo en instrucciones nativas que el procesador
+          de tu computadora pueda entender.
+        </p>
+        <p>
+          A diferencia de lenguajes como C++ que se compilan directamente a
+          binario de un sistema operativo específico (un ejecutable para Linux
+          no corre en Windows), Java introduce un paso intermedio: el
+          <strong>Bytecode</strong>. La JVM lee este Bytecode, logrando la
+          famosa filosofía de Java:
+          <em>"Escribe una vez, ejecútalo en cualquier lugar"</em>.
+        </p>
+
+        <div class="note-box">
+          <p>
+            <strong>💡 Nota:</strong> La JVM es abstracta y universal, pero su
+            implementación es nativa. Esto significa que existe una JVM
+            específica para Windows, una para macOS y otra para Linux. Tu
+            Bytecode es exactamente el mismo, pero cada JVM sabe cómo hablarle
+            al sistema operativo que la aloja.
+          </p>
+        </div>
+
+        <h2>2. El Entorno de Ejecución (JRE)</h2>
+        <p>
+          El <strong>JRE (Java Runtime Environment)</strong> es la capa que
+          envuelve a la JVM. No solo contiene la JVM, sino también todas las
+          <strong>bibliotecas estándar de clases</strong> de Java (como
+          estructuras de datos, manejo de archivos y utilidades de red) que tu
+          programa necesita para poder abrirse y operar.
+        </p>
+        <p>
+          Piensa en el JRE como el paquete que necesita un cliente o usuario
+          final para abrir un software hecho en Java en su computadora: no va a
+          programar, solo quiere que la aplicación funcione.
+        </p>
+
+        <h2>3. El Kit de Desarrollo (JDK)</h2>
+        <p>
+          El <strong>JDK (Java Development Kit)</strong> es la capa exterior y
+          la herramienta definitiva que usas tú como desarrollador. Contiene
+          absolutamente todo lo del JRE y la JVM, sumando las herramientas de
+          desarrollo indispensables: el compilador (<code>javac</code>),
+          utilidades de empaquetado (<code>jar</code>) y depuradores.
+        </p>
+
+        <h2>El Flujo de Ejecución en Código</h2>
+        <p>
+          Veamos esto reflejado en un flujo de compilación real de un archivo
+          tradicional de Java:
+        </p>
+
+        <pre><code class="language-java">
+        public class Main {
+            public static void main(String[] args) {
+                System.out.println("Hola Mundo");
+            }
+        }
+        </code></pre>
+
+        <p>
+          Cuando trabajas desde la consola, el proceso manual para ver este
+          programa correr consta de dos fases críticas ejecutadas por diferentes
+          componentes del JDK:
+        </p>
+
+        <h3>Paso A: La Compilación (Hecha por el JDK)</h3>
+        <p>
+          Usas el compilador nativo para traducir tu texto plano a instrucciones
+          abstractas:
+        </p>
+        <pre><code class="language-bash">
+        $ javac Main.java
+        </code></pre>
+        <p>
+          Esto no genera un binario binario ejecutable, sino un archivo
+          intermedio llamado <code>HolaAkari.class</code>. Si abrieras este
+          archivo, verías puros caracteres extraños: eso es el
+          <strong>Bytecode</strong>.
+        </p>
+
+        <h3>Paso B: La Ejecución (Hecha por la JVM dentro del JRE)</h3>
+        <p>
+          Ahora, le pides a la máquina virtual que interprete ese Bytecode en tu
+          sistema operativo actual:
+        </p>
+
+        <pre><code class="language-bash">
+        $ java Main
+        Salida: Hola Mundo
+        </code></pre>
+
+        <h2>Resumen de Capas</h2>
+        <ul>
+          <li>
+            <strong>JVM:</strong> Ejecuta el Bytecode convirtiéndolo a código
+            máquina nativo.
+          </li>
+          <li>
+            <strong>JRE:</strong> JVM + Bibliotecas de clases del sistema (Para
+            ejecutar programas).
+          </li>
+          <li>
+            <strong>JDK:</strong> JRE + Herramientas de Desarrollo como
+            <code>javac</code> (Para programar y compilar).
+          </li>
+        </ul>
+
+        <div class="note-box">
+          <p>
+            <strong>💡 Nota:</strong> Recuerda que la portabilidad de Java no
+            radica en el compilador, sino en la JVM. El compilador siempre
+            genera el mismo Bytecode plano pero es la JVM instalada en el
+            sistema que la aloja quien hace la magia de traducir ese Bytecode al
+            idioma específico de cada procesador.
+          </p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
