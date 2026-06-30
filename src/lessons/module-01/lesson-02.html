@@ -1,0 +1,281 @@
+<!--
+Project: Akari
+Description: Lesson 02 - Java Variables, Constants and Data Types.
+This page is the second lesson of Module 01, exploring the storage of information, 
+the static typing system, and the practical use of primitive types versus Wrapper classes.
+
+Path: /lessons/module-01/lesson-02.html
+Author: Alexis Corona
+Version: Development
+-->
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables, Constantes y Tipos de Datos</title>
+    <link rel="stylesheet" href="../../index.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="index.html" class="back-link">🡠 Volver</a>
+        <a
+          href="https://github.com/alexis-corona"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-link"
+          title="Ver perfil de GitHub"
+        >
+          <svg
+            class="github-icon"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            />
+          </svg>
+        </a>
+
+        <h1>Variables, Constantes y Tipos de Datos</h1>
+        <p class="subtitle">
+          Explorando las variables, constantes y los tipos de datos
+          fundamentales en Java.
+        </p>
+      </header>
+
+      <main class="lesson-content">
+        <h2>1. Variables</h2>
+        <p>
+          En programación, una <strong>variable</strong> es un espacio reservado
+          en la memoria RAM de la computadora diseñado para almacenar un valor
+          que puede cambiar durante la ejecución del programa.
+        </p>
+        <p>
+          Para entenderlo mejor, piensa en la memoria RAM como una fila infinita
+          de casilleros numerados (direcciones de memoria). En lugar de que tú
+          tengas que recordar el número exacto del casillero (por ejemplo,
+          <code>0x7ffd5</code>), Java te permite asignarle un
+          <strong>nombre simbólico</strong> (un identificador).
+        </p>
+
+        <h3>¿Cómo funciona el ciclo de vida de una variable?</h3>
+        <ul>
+          <li>
+            <strong>Declaración:</strong> Es cuando le decimos a Java: "Reserva
+            un espacio en memoria para un dato de este tipo y llámalo con este
+            nombre". <em>Ejemplo: <code>int edad;</code></em>
+          </li>
+          <li>
+            <strong>Inicialización:</strong> Es el momento en que guardamos el
+            primer valor dentro de ese espacio.
+            <em>Ejemplo: <code>edad = 25;</code></em>
+          </li>
+          <li>
+            <strong>Uso:</strong> Es cuando el programa lee el contenido de esa
+            "caja" para realizar cálculos o mostrar resultados.
+          </li>
+          <li>
+            <strong>Actualización:</strong> Como su nombre lo indica, el valor
+            dentro de la caja puede cambiar a lo largo del tiempo,
+            sobrescribiendo el valor anterior.
+          </li>
+        </ul>
+
+        <div class="note-box">
+          <p>
+            <strong>💡 Concepto clave:</strong> La
+            <strong>declaración</strong> es obligatoria en Java. A diferencia de
+            lenguajes como Python o JavaScript, Java es "estricto": si no
+            declaras qué tipo de datos contendrá tu variable, el compilador
+            rechazará tu código antes de que siquiera intentes ejecutarlo. Esto
+            previene errores de "tipo" que son muy comunes en otros lenguajes.
+          </p>
+        </div>
+
+        <h2>2. Constantes: Valores que no cambian</h2>
+        <p>
+          A veces, necesitamos definir valores que deben permanecer inalterables
+          durante toda la ejecución de nuestro programa, como el valor de PI o
+          el número máximo de intentos en un inicio de sesión. Para esto usamos
+          el modificador <code>final</code>.
+        </p>
+
+        <pre><code class="language-java">
+        // Una variable normal puede cambiar
+        int contador = 10;
+        contador = 11; // Permitido
+
+        // Una constante no puede cambiar
+        final double PI = 3.14159;
+        // PI = 3.14; // ¡Error! El compilador no permitirá este cambio
+        </code></pre>
+
+        <div class="note-box">
+          <p>
+            <strong>💡 Convención de nombres:</strong> Por convención en Java,
+            las constantes se escriben siempre en
+            <strong>MAYÚSCULAS_SOSTENIDAS</strong>, separando las palabras con
+            un guion bajo (estilo <code>SCREAMING_SNAKE_CASE</code>). Esto
+            permite identificarlas inmediatamente dentro de un bloque de código
+            largo.
+          </p>
+        </div>
+
+        <h2>3. El sistema de tipos en Java</h2>
+        <p>
+          A diferencia de lenguajes de tipado dinámico, Java es un lenguaje de
+          <strong>tipado estático y fuerte</strong>. Esto significa que cada
+          variable y constante debe tener un tipo declarado y este no puede
+          cambiar durante la ejecución. Esto garantiza la integridad de los
+          datos en memoria, ya que Java conoce exactamente cuánto espacio ocupa
+          cada variable antes de que el programa se ejecute.
+        </p>
+
+        <h2>4. Tipos Primitivos</h2>
+        <p>
+          Java utiliza 8 tipos primitivos que almacenan valores directamente en
+          la pila (stack). Son los bloques constructores más eficientes del
+          lenguaje. A continuación, vemos cómo declarar y asignar valores a cada
+          uno en un contexto real:
+        </p>
+        <ul>
+          <li>
+            <strong>Números enteros:</strong> <code>byte</code>,
+            <code>short</code>, <code>int</code> (el estándar), y
+            <code>long</code> (para valores masivos).
+          </li>
+          <li>
+            <strong>Números decimales:</strong> <code>float</code> y
+            <code>double</code> (el estándar de precisión).
+          </li>
+          <li>
+            <strong>Lógica:</strong> <code>boolean</code> (solo puede ser
+            <code>true</code> o <code>false</code>).
+          </li>
+          <li>
+            <strong>Caracteres:</strong> <code>char</code> (almacena un único
+            carácter Unicode).
+          </li>
+        </ul>
+
+        <pre><code class="language-java">
+        // Números enteros
+        byte diaSemana = 1; 
+        short añoNacimiento = 1995; 
+        int idUsuario = 102450; 
+        long seguidores = 1500000L; // La 'L' indica que es un long
+            
+        // Números decimales
+        float precioProducto = 9.99f; // La 'f' indica que es float
+        double balanceCuenta = 2500.50; 
+            
+        // Lógica
+        boolean estaActivo = true; 
+
+        // Caracteres
+        char inicial = 'A'; 
+        </code></pre>
+
+        <div class="note-box">
+          <p>
+            <strong>💡 ¿Por qué tantos tipos?</strong> La respuesta es
+            <strong>eficiencia</strong>. Usar un <code>byte</code> ahorra
+            memoria frente a un <code>int</code>. Aunque hoy tenemos mucha RAM,
+            en sistemas de alto rendimiento o embebidos, elegir el tipo correcto
+            es vital.
+          </p>
+        </div>
+
+        <h2>5. Tipos Objeto (Wrapper Classes)</h2>
+        <p>
+          En Java, los tipos primitivos no son objetos y, por tanto, no tienen
+          métodos. Aquí es donde entran las <strong>Clases Wrapper</strong>.
+          Cada primitivo tiene su "envoltura" como objeto, lo que nos permite
+          usar funciones poderosas sobre ellos (como convertir a String,
+          comparar con null o realizar conversiones de base).
+        </p>
+        <p>
+          Mientras que el primitivo es solo un valor crudo en memoria, el objeto
+          es una entidad que nos ofrece herramientas de manipulación:
+        </p>
+        <ul>
+          <li>
+            <strong>Números enteros:</strong> <code>Byte</code>,
+            <code>Short</code>, <code>Integer</code> (el estándar), y
+            <code>Long</code> (para valores masivos).
+          </li>
+          <li>
+            <strong>Números decimales:</strong> <code>Float</code> y
+            <code>Double</code> (el estándar de precisión).
+          </li>
+          <li>
+            <strong>Lógica:</strong> <code>Boolean</code> (solo puede ser
+            <code>true</code>, <code>false</code> o <code>null</code>).
+          </li>
+          <li>
+            <strong>Caracteres:</strong> <code>Character</code> (ofrece métodos
+            para validar letras, números, etc.).
+          </li>
+          <li>
+            <strong>Texto:</strong> <code>String</code> (no tiene primitivo, es
+            una clase fundamental para cadenas).
+          </li>
+        </ul>
+
+        <pre><code class="language-java">
+        // Números enteros
+        Byte b = Byte.valueOf("127");
+        Short s = Short.valueOf("32000");
+        Integer i = Integer.parseInt("102450");
+        Long l = Long.valueOf(1500000L);
+        
+        // Números decimales
+        Float f = Float.valueOf(9.99f);
+        Double d = Double.valueOf(2500.50);
+        
+        // Lógica
+        Boolean bool = Boolean.TRUE; // Constante útil
+        
+        // Caracteres y Texto
+        Character c = Character.valueOf('A');
+        String nombre = String.valueOf("Akari");
+        
+        // Ejemplos de uso de métodos de los Wrappers:
+        System.out.println(Character.isDigit(c));     // false
+        System.out.println(Integer.toHexString(i));   // "19032"
+        System.out.println(Double.max(d, 5000.0));    // 5000.0
+        System.out.println(nombre.toUpperCase());     // "AKARI"
+        </code></pre>
+
+        <div class="note-box">
+          <p>
+            <strong>💡 Nota:</strong> El proceso donde Java convierte
+            automáticamente un primitivo a su objeto se llama
+            <strong>Autoboxing</strong>, y el proceso inverso (objeto a
+            primitivo) se llama <strong>Unboxing</strong>. Es una herramienta
+            poderosa, pero ten cuidado: si intentas hacer <em>unboxing</em> de
+            un objeto que es <code>null</code>, tu programa lanzará un error
+            <code>NullPointerException</code>.
+          </p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
