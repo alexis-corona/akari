@@ -1,0 +1,210 @@
+<!--
+Project: Akari
+Description: Lesson 03 - Java Operators and Control Flow.
+This page is the third lesson of Module 01, covering relational operators, logical operators, 
+decision structures (if/else, switch), and iteration cycles (for, while, do-while).
+
+Path: /lessons/module-01/lesson-03.html
+Author: Alexis Corona
+Version: Development
+-->
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operadores y Control de Flujo</title>
+    <link rel="stylesheet" href="../../index.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="index.html" class="back-link">&lt; Volver</a>
+        <a
+          href="https://github.com/alexis-corona"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-link"
+          title="Ver perfil de GitHub"
+        >
+          <svg
+            class="github-icon"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            />
+          </svg>
+        </a>
+
+        <h1>Operadores y Control de Flujo</h1>
+        <p class="subtitle">
+          Dominando la toma de decisiones y los ciclos de ejecución en Java.
+        </p>
+      </header>
+
+      <main class="lesson-content">
+        <p>
+          El control de flujo es lo que permite que un programa tome decisiones
+          y repita tareas de forma inteligente. En Java, esto es posible gracias
+          a una serie de estructuras que dictan la ruta de ejecución del código
+          basándose en condiciones lógicas.
+        </p>
+
+        <h2>1. Operadores</h2>
+        <p>
+          Antes de controlar el flujo, debemos poder comparar valores. Java nos
+          permite evaluar condiciones usando:<br />
+        </p>
+        <p>Operadores relacionales:</p>
+        <ul>
+          <li><code>==</code> (igual a)</li>
+          <li><code>!=</code> (distinto de)</li>
+          <li><code>&gt;</code> (mayor que)</li>
+          <li><code>&lt;</code> (menor que)</li>
+          <li><code>&gt;=</code> (mayor o igual que)</li>
+          <li><code>&lt;=</code> (menor o igual que)</li>
+        </ul>
+        <p>Operadores lógicos:</p>
+        <ul>
+          <li><code>&amp;&amp;</code> (and lógico)</li>
+          <li><code>||</code> (or lógico)</li>
+          <li><code>!</code> (not lógico)</li>
+        </ul>
+
+        <h2>2. Estructura if/else</h2>
+        <p>
+          El <code>if/else</code> es la estructura de decisión básica. Permite
+          ejecutar un bloque de código si una condición es verdadera, y
+          opcionalmente otro si es falsa. Cuando es necesario evaluar
+          <strong>múltiples condiciones excluyentes</strong>, utilizamos
+          <code>else if</code>.
+        </p>
+        <pre><code class="language-java">
+        // if/else básico
+        int edad = 21;
+        if (edad >= 18) {
+            System.out.println("Eres mayor de edad.");
+        } else {
+            System.out.println("Eres menor de edad.");
+        }
+        // Sailida: Eres mayor de edad.
+        
+
+        // if/else con múltiples condiciones excluyentes
+        int calificacion = 45;
+        if (calificacion >= 90) {
+            System.out.println("Excelente");
+        } else if (calificacion >= 80) {
+            System.out.println("Muy bien");
+        } else if (calificacion >= 70) {
+            System.out.println("Bien");
+        } else if (calificacion >= 60) {
+            System.out.println("Suficiente");
+        } else {
+            System.out.println("Reprobado");
+        }
+        // Salida: Reprobado
+        </code></pre>
+
+        <h2>3. Estructura switch</h2>
+        <p>
+          El <code>switch</code> es ideal cuando necesitas evaluar una variable
+          contra múltiples valores posibles, haciendo el código mucho más limpio
+          que múltiples <code>if else</code> anidados.
+        </p>
+        <pre><code class="language-java">
+        int dia = 3;
+        switch (dia) {
+            case 1: System.out.println("Lunes"); break;
+            case 2: System.out.println("Martes"); break;
+            case 3: System.out.println("Miércoles"); break;
+            case 4: System.out.println("Jueves"); break;
+            case 5: System.out.println("Viernes"); break;
+            case 6: System.out.println("Sábado"); break;
+            case 7: System.out.println("Domingo"); break;
+            default: System.out.println("Día no identificado");
+        }
+        // Salida: Miércoles
+        </code></pre>
+
+        <h2>4. Ciclo for</h2>
+        <p>
+          El <code>for</code> se utiliza cuando conoces de antemano el número
+          exacto de iteraciones que deseas realizar.
+        </p>
+        <pre><code class="language-java">
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Iteración número: " + i);
+        }
+        // Salida:
+        // Iteración número: 0
+        // Iteración número: 1
+        // Iteración número: 2
+        </code></pre>
+
+        <h2>5. Ciclo while</h2>
+        <p>
+          El <code>while</code> repite un bloque de código mientras una
+          condición permanezca verdadera. Se evalúa antes de cada iteración.
+        </p>
+        <pre><code class="language-java">
+        int contador = 0;
+        while (contador <= 5) {
+            System.out.println("Contador: " + contador);
+            contador++;
+        }
+        // Salida:
+        // Contador: 0
+        // Contador: 1
+        // Contador: 2
+        // Contador: 3
+        // Contador: 4
+        // Contador: 5
+        </code></pre>
+
+        <h2>6. Ciclo do-while</h2>
+        <p>
+          A diferencia del <code>while</code>, el
+          <code>do-while</code> garantiza que el bloque de código se ejecute
+          <strong>al menos una vez</strong>, ya que la condición se evalúa al
+          final.
+        </p>
+        <pre><code class="language-java">
+        int x = 0;
+        do {
+            System.out.println("Esto se ejecuta aunque la condición sea falsa después.");
+            x++; // aquí x = 1
+        } while (x < 0);  // como x = 1, la condición ya no es verdadera
+        // Salida: Esto se ejecuta aunque la condición sea falsa después.
+        </code></pre>
+
+        <div class="note-box">
+          <p>
+            <strong>💡 Nota:</strong> Elegir la estructura correcta es
+            fundamental. Mientras que un <code>for</code> es excelente para
+            recorrer colecciones de datos, un <code>while</code> es más
+            apropiado cuando esperas un evento externo o una condición dinámica.
+            ¡Domina estas herramientas para escribir algoritmos eficientes!
+          </p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
