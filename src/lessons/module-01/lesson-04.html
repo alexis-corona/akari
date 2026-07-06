@@ -1,0 +1,293 @@
+<!--
+Project: Akari
+Description: Lesson 04 - Data Input and Output.
+This page is the fourth lesson of Module 01, covering console interaction using
+Scanner, the handling of input buffers, formatted output, and secure file reading
+with BufferedReader.
+
+Path: /lessons/module-01/lesson-04.html
+Author: Alexis Corona
+Version: Development
+-->
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrada y Salida de Datos</title>
+    <link rel="stylesheet" href="../../index.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="index.html" class="back-link">&lt; Volver</a>
+        <a
+          href="https://github.com/alexis-corona"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-link"
+          title="Ver perfil de GitHub"
+        >
+          <svg
+            class="github-icon"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            />
+          </svg>
+        </a>
+
+        <h1>Entrada y Salida de Datos</h1>
+        <p class="subtitle">
+          Dominando la entrada, salida y persistencia básica de datos en Java.
+        </p>
+      </header>
+
+      <main class="lesson-content">
+        <p>
+          Hasta ahora, nuestro código ha operado de forma aislada, mostrando
+          información únicamente en la consola. Sin embargo, un software
+          profesional debe ser capaz de interactuar con el exterior. En esta
+          lección, aprenderás a gestionar el flujo de datos en Java: desde la
+          captura interactiva de información vía teclado con Scanner, hasta
+          técnicas avanzadas de salida formateada y la persistencia de datos
+          mediante la lectura eficiente de archivos externos con BufferedReader.
+        </p>
+
+        <h2>1. La Clase Scanner</h2>
+        <p>
+          <code>Scanner</code> es una herramienta versátil que desglosa la
+          entrada de datos en "tokens" (pedazos) simples. Para utilizarla,
+          primero debemos importarla desde <code>java.util</code> y crear una
+          instancia vinculada a <code>System.in</code>.
+        </p>
+
+        <pre><code class="language-java">
+        import java.util.Scanner;
+
+        public class EntradaEjemplo {
+            public static void main(String[] args) {
+                // Creamos el objeto Scanner
+                Scanner scanner = new Scanner(System.in);
+
+                System.out.print("¿Cómo te llamas? ");
+                String nombre = scanner.nextLine(); // Lee una línea completa
+
+                System.out.print("Ingresa tu edad: ");
+                int edad = scanner.nextInt(); // Lee un número entero
+
+                System.out.println("Hola " + nombre + ", tienes " + edad + " años.");
+                
+                // Siempre es buena práctica cerrar el scanner
+                scanner.close();
+            }
+        }
+        </code></pre>
+
+        <h2>2. Métodos de lectura comunes</h2>
+        <p>
+          Dependiendo del tipo de dato que necesites,
+          <code>Scanner</code> ofrece métodos específicos. Es fundamental elegir
+          el correcto para evitar errores de tipo:
+        </p>
+        <ul>
+          <li>
+            <code>nextLine()</code>: Lee una línea completa de texto (incluyendo
+            espacios).
+          </li>
+          <li>
+            <code>next()</code>: Lee solo una palabra (se detiene al encontrar
+            un espacio).
+          </li>
+          <li><code>nextInt()</code>: Lee el siguiente valor como entero.</li>
+          <li>
+            <code>nextDouble()</code>: Lee el siguiente valor como decimal.
+          </li>
+          <li>
+            <code>nextBoolean()</code>: Lee un valor booleano (true/false).
+          </li>
+        </ul>
+
+        <pre><code class="language-java">
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("--- Registro de Datos ---");
+
+        // Lectura de nombre completo (usa toda la línea)
+        System.out.print("Escribe tu nombre: ");
+        String nombre = scanner.nextLine(); 
+
+        // next() solo leerá la primera palabra (el primer color si escribe más de uno)
+        System.out.print("Escribe tu color favorito: ");
+        String color = scanner.next(); 
+
+        // Lectura de valores numéricos
+        System.out.print("Escribe tu edad: ");
+        int edad = scanner.nextInt();
+
+        System.out.print("Escribe tu promedio de calificaciones: ");
+        double promedio = scanner.nextDouble();
+
+        // Lectura de valor booleano
+        System.out.print("¿Tienes mascota? (true/false): ");
+        boolean tieneMascota = scanner.nextBoolean();
+
+        // Resumen
+        System.out.println("\n--- Datos recibidos ---");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Color: " + color + " (Solo se guardó la primera palabra)");
+        System.out.println("Edad: " + edad);
+        System.out.println("Promedio: " + promedio);
+        System.out.println("¿Tiene mascota?: " + tieneMascota);
+
+        scanner.close();
+        </code></pre>
+
+        <div class="note-box">
+          <p>
+            <strong>💡 Nota:</strong> La lectura de datos es un punto de entrada
+            para errores (como que el usuario escriba letras cuando esperabas
+            números). A medida que avances, aprenderás a manejar estas
+            situaciones con <strong>bloques try-catch</strong> para validar que
+            la entrada del usuario sea correcta antes de procesarla.
+          </p>
+        </div>
+
+        <h2>3. Consideración importante: El "Salto de línea"</h2>
+        <p>
+          Un error muy común ocurre al combinar <code>nextInt()</code> o
+          <code>nextDouble()</code> con <code>nextLine()</code>. Estos métodos
+          numéricos no consumen el carácter de salto de línea (el "Enter" que
+          presionas), por lo que el siguiente <code>nextLine()</code> puede leer
+          una cadena vacía restante en lugar de esperar la entrada del usuario.
+          La solución rápida es consumir ese salto restante con un
+          <code>nextLine()</code> adicional:
+        </p>
+
+        <pre><code class="language-java">
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingresa tu edad: ");
+        int edad = scanner.nextInt(); // El usuario escribe 25 + [Enter]
+        
+        // El '25' se guarda en edad, pero el [Enter] sigue en el buffer
+        
+        System.out.print("Ingresa tu nombre: ");
+        String nombre = scanner.nextLine(); // ¡Error! Lee el [Enter] pendiente y se salta la entrada
+        
+        
+        // Solución 
+        
+        System.out.print("Ingresa tu edad: ");
+        int edad = scanner.nextInt();
+        scanner.nextLine(); // Consumimos el salto de línea pendiente
+        
+        System.out.print("Ingresa tu nombre: ");
+        String nombre = scanner.nextLine(); // Ahora sí funciona correctamente
+        </code></pre>
+
+        <h2>4. Impresión en consola: print vs println</h2>
+        <p>
+          Antes de usar formatos complejos, es vital recordar la diferencia
+          fundamental en Java para mostrar texto en consola:
+        </p>
+        <ul>
+          <li>
+            <code>System.out.print()</code>: Muestra el contenido y deja el
+            cursor <strong>justo al final</strong> de lo impreso. No añade un
+            salto de línea.
+          </li>
+          <li>
+            <code>System.out.println()</code>: Muestra el contenido y añade
+            automáticamente un <strong>salto de línea</strong> al final,
+            moviendo el cursor al inicio del siguiente renglón.
+          </li>
+        </ul>
+
+        <pre><code class="language-java">
+        // print
+        System.out.print("Hola");
+        System.out.print("Mundo");
+        // Salida: HolaMundo
+        
+        // println
+        System.out.println("Hola");
+        System.out.println("Mundo");
+        // Salida:
+        // Hola
+        // Mundo
+        </code></pre>
+
+        <h2>5. Salida formateada (System.out.printf)</h2>
+        <p>
+          Para presentaciones de datos más limpias (como reportes o precios),
+          <code>System.out.println</code> puede quedarse corto.
+          <code>printf</code> nos permite definir una "plantilla" de salida:
+        </p>
+        <pre><code class="language-java">
+        double precio = 19.995;
+        // %.2f formatea a 2 decimales
+        System.out.printf("El precio total es: $%.2f %n", precio); 
+        // Salida: El precio total es: $20.00
+        </code></pre>
+
+        <h2>6. Lectura de archivos con BufferedReader</h2>
+        <p>
+          Cuando el volumen de datos es grande, no podemos depender de la
+          consola. Java utiliza la clase
+          <code>BufferedReader</code> junto con <code>FileReader</code> para
+          leer archivos de forma eficiente. Este método es más rápido que
+          <code>Scanner</code> para archivos de texto extensos.
+        </p>
+
+        <pre><code class="language-java">
+        import java.io.BufferedReader;
+        import java.io.FileReader;
+        import java.io.IOException;
+
+        public class LectorArchivo {
+            public static void main(String[] args) {
+                // Usamos el bloque try-with-resources para cerrar el archivo automáticamente
+                try (BufferedReader br = new BufferedReader(new FileReader("datos.txt"))) {
+                    String linea;
+                    while ((linea = br.readLine()) != null) {
+                        System.out.println(linea);
+                    }
+                } catch (IOException e) {
+                    System.err.println("Error al leer el archivo: " + e.getMessage());
+                }
+            }
+        }
+        </code></pre>
+
+        <div class="note-box">
+          <p>
+            <strong>💡 Nota:</strong> Fíjate en el bloque
+            <code>try (...)</code>: esto es una característica de Java llamada
+            <em>try-with-resources</em>. Asegura que el archivo se cierre
+            correctamente al terminar, evitando fugas de memoria o bloqueos en
+            el sistema operativo, incluso si ocurre un error durante la lectura.
+            ¡Es la forma segura de programar en Java!
+          </p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
